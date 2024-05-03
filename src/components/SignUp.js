@@ -10,7 +10,7 @@ function SignUp() {
     const handleSignUp = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch('https://budget-application-zbnmx.ondigitalocean.app/api/signup', {
+            const response = await fetch('https://budget-app-j98yq.ondigitalocean.app/api/signup', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
