@@ -10,7 +10,7 @@ function SignUp() {
     const handleSignUp = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch('http://localhost:5001/api/signup', {  
+            const response = await fetch('https://budget-application-zbnmx.ondigitalocean.app/', {  
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
