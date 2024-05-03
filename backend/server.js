@@ -1,3 +1,4 @@
+// server.js
 require('dotenv').config({
     path: process.env.NODE_ENV === 'production' ? '.env.production' : '.env'
   });
@@ -10,7 +11,7 @@ require('dotenv').config({
   require('./models/User');
   
   const corsOptions = {
-    origin: process.env.CORS_ORIGIN || 'https://budget-application-zbnmx.ondigitalocean.app',
+    origin: process.env.CORS_ORIGIN || 'https://budget-application-zbnmx.ondigitalocean.app/',
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
@@ -22,7 +23,7 @@ require('dotenv').config({
   const { getUserByUsername, addUser, updateBudget, getBudgetByUsername } = require('./dbHelpers');
   const { authenticateToken } = require('./auth');
   
-  const PORT = process.env.PORT || 8080;
+  const PORT = process.env.PORT || 5001;
   
   app.post('/api/signup', async (req, res) => {
     const { username, password } = req.body;
@@ -92,3 +93,4 @@ require('dotenv').config({
   app.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);
   });
+  
