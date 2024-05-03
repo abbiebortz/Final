@@ -25,7 +25,7 @@ require('dotenv').config({
   const { getUserByUsername, addUser, updateBudget, getBudgetByUsername } = require('./dbHelpers');
   const { authenticateToken } = require('./auth');
   
-  const PORT = process.env.PORT || 8080;
+  const PORT = process.env.PORT || 443;
   
   const options = {
     key: fs.readFileSync('key.pem'),
