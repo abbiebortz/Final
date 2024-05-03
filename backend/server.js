@@ -1,9 +1,11 @@
-// server.js
 require('dotenv').config({
     path: process.env.NODE_ENV === 'production' ? '.env.production' : '.env'
   });
   
   const express = require('express');
+  const https = require('https');
+  const fs = require('fs');
+  
   const bcrypt = require('bcryptjs');
   const jwt = require('jsonwebtoken');
   const cors = require('cors');
@@ -25,6 +27,13 @@ require('dotenv').config({
   
   const PORT = process.env.PORT || 5001;
   
+  const options = {
+    key: fs.readFileSync('key.pem'),
+    cert: fs.readFileSync('cert.pem')
+  };
+  
+  const server = https.createServer(options, app);
+  
   app.post('/api/signup', async (req, res) => {
     const { username, password } = req.body;
     try {
@@ -34,15 +43,13 @@ require('dotenv').config({
         }
         const hashedPassword = await bcrypt.hash(password, 10);
         const newUser = await addUser({ username, password: hashedPassword });
-
-        
+  
         return res.status(200).json({ message: "User added successfully. Please log in." });
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: "Internal server error" });
     }
-});
-
+  });
   
   app.get('/api/user', authenticateToken, async (req, res) => {
       const user = await getUserByUsername(req.user.username);
@@ -90,7 +97,7 @@ require('dotenv').config({
       }
   });
   
-  app.listen(PORT, () => {
+  server.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);
   });
   
