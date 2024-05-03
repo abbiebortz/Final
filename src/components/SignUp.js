@@ -10,13 +10,14 @@ function SignUp() {
     const handleSignUp = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch('https://budget-application-zbnmx.ondigitalocean.app/', {  
+            const response = await fetch('https://budget-application-zbnmx.ondigitalocean.app/api/signup', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({ username, password })
             });
+
     
             if (response.ok) {
                 alert('Account created successfully. Please log in.');  // Inform user to log in manually

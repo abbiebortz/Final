@@ -12,15 +12,14 @@ function Homepage() {
     const handleLogin = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch('https://budget-application-zbnmx.ondigitalocean.app/', {
+            const response = await fetch('https://budget-application-zbnmx.ondigitalocean.app/api/login', {
                 method: 'POST',
                 headers: {
-                    
                     'Content-Type': 'application/json'
                 },
-                
                 body: JSON.stringify({ username, password })
             });
+
 
             if (response.ok) {
                 const data = await response.json();
