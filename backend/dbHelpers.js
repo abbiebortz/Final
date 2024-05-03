@@ -1,25 +1,21 @@
-// dbHelpers.js
 require('dotenv').config({
     path: process.env.NODE_ENV === 'production' ? '.env.production' : '.env'
-  });
-  const mongoose = require('mongoose');
-  const User = require('./models/User');
-  const Budget = require('./models/Budget');
-  
-  // Connect to MongoDB
-  mongoose.connect(process.env.MONGODB_URI, {
-      useNewUrlParser: true, 
-      useUnifiedTopology: true
-  })
-  .then(() => console.log('MongoDB connection successful'))
-  .catch(err => {
-      console.error('MongoDB connection error:', err.message);
-      process.exit(1);
-  });
-  
-  // Other code remains the same...
-  
+});
+const mongoose = require('mongoose');
+const User = require('./models/User');
+const Budget = require('./models/Budget');
 
+// Connect to MongoDB
+mongoose.connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true, 
+    useUnifiedTopology: true
+})
+.then(() => console.log('MongoDB connection successful'))
+.catch(err => {
+    console.error('MongoDB connection error:', err.message);
+    process.exit(1);
+});
+  
 // Get a user by username
 const getUserByUsername = async (username) => {
     try {
