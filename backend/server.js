@@ -11,7 +11,7 @@ require('dotenv').config({
   require('./models/User');
   
   const corsOptions = {
-    origin: process.env.CORS_ORIGIN || 'http://localhost:3000',
+    origin: process.env.CORS_ORIGIN || 'https://budget-application-zbnmx.ondigitalocean.app/',
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
