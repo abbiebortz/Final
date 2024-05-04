@@ -14,7 +14,7 @@ require('./models/User');
 
 // Ensure the CORS origin matches exactly the client URL, and potentially remove the trailing slash
 const corsOptions = {
-    origin: 'https://budget-app-j98yq.ondigitalocean.app', // Removed trailing slash for consistency
+    origin: 'https://budget-app-j98yq.ondigitalocean.app/', 
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
