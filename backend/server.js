@@ -13,13 +13,14 @@ const app = express();
 require('./models/User');
 
 const corsOptions = {
-    origin: 'https://budget-app-j98yq.ondigitalocean.app', 
+    origin: 'https://budget-app-j98yq.ondigitalocean.app',
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
 };
 
 app.use(cors(corsOptions));
+
 app.use(express.json());
 
 const { getUserByUsername, addUser, updateBudget, getBudgetByUsername } = require('./dbHelpers');
