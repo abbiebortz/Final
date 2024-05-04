@@ -12,7 +12,7 @@ function Homepage() {
     const handleLogin = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch(`${process.env.REACT_APP_API_URL}`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}api/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
