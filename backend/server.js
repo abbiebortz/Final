@@ -12,15 +12,15 @@ const app = express();
 
 require('./models/User');
 
+// Ensure the CORS origin matches exactly the client URL, and potentially remove the trailing slash
 const corsOptions = {
-    origin: 'https://budget-app-j98yq.ondigitalocean.app',
+    origin: 'https://budget-app-j98yq.ondigitalocean.app', // Removed trailing slash for consistency
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
 };
 
 app.use(cors(corsOptions));
-
 app.use(express.json());
 
 const { getUserByUsername, addUser, updateBudget, getBudgetByUsername } = require('./dbHelpers');
