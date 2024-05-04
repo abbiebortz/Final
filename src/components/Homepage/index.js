@@ -12,7 +12,7 @@ function Homepage() {
     const handleLogin = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch('https://budget-application-zbnmx.ondigitalocean.app/api/login', {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -20,13 +20,13 @@ function Homepage() {
                 body: JSON.stringify({ username, password })
             });
 
-
             if (response.ok) {
                 const data = await response.json();
-                setAuthenticated(true, data.token);
-                setToken(data.token);  
+                setAuthenticated(true);  // Note: If setAuthenticated should also handle the token, pass it here
+                setToken(data.token);
                 navigate('/dashboard');
             } else {
+                const text = await response.text();  
                 alert('Failed to log in. Please check your username and password.');
             }
         } catch (error) {

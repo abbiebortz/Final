@@ -23,8 +23,6 @@ const getRandomColor = () => {
     return `rgba(${r}, ${g}, ${b}, 0.2)`;
 };
 
-
-
 const Dashboard = () => {
     const { isAuthenticated } = useAuth();
     const navigate = useNavigate();
@@ -38,11 +36,11 @@ const Dashboard = () => {
     const updateTotal = useCallback((items) => {
         const totalCost = items.reduce((acc, item) => acc + item.cost, 0);
         setTotal(totalCost);
-    }, [setTotal]); // Added useCallback and moved before its usage in useCallback below
+    }, [setTotal]);
 
     const fetchItems = useCallback(async () => {
         try {
-            const response = await fetch('https://budget-application-zbnmx.ondigitalocean.app/', {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/items`, {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             });
             if (!response.ok) {
@@ -80,7 +78,7 @@ const Dashboard = () => {
         setEditingIndex(-1);
 
         try {
-            const response = await fetch('https://budget-application-zbnmx.ondigitalocean.app/', {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/update`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

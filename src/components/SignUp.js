@@ -10,7 +10,7 @@ function SignUp() {
     const handleSignUp = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch('https://budget-app-j98yq.ondigitalocean.app/api/signup', {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/signup`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -18,11 +18,9 @@ function SignUp() {
                 body: JSON.stringify({ username, password })
             });
 
-
-    
             if (response.ok) {
                 alert('Account created successfully. Please log in.');  // Inform user to log in manually
-                navigate('/');  // Removed auto-redirect to login page
+                navigate('/');  // Redirect to home page or login page
             } else {
                 const text = await response.text();  
                 alert('Failed to sign up: ' + text);
