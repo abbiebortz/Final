@@ -40,7 +40,7 @@ const Dashboard = () => {
 
     const fetchItems = useCallback(async () => {
         try {
-            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/items`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/budget`, {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             });
             if (!response.ok) {
