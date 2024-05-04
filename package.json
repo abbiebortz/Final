@@ -20,7 +20,8 @@
     "ws": "^8.17.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node server.js",
+    "postbuild": "mv build backend/build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
