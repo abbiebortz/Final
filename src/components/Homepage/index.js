@@ -5,14 +5,14 @@ import styles from './Homepage.module.css';
 
 function Homepage() {
     const navigate = useNavigate();
-    const { setAuthenticated, setToken } = useAuth();  // Ensure setToken is used here correctly
+    const { setAuthenticated, setToken } = useAuth();  
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
     const handleLogin = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/login`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}api/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
