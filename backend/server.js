@@ -42,7 +42,7 @@ try {
 
 const server = https.createServer(options, app);
 
-app.post('api/signup', async (req, res) => {
+app.post('/api/signup', async (req, res) => {
     const { username, password } = req.body;
     try {
         const existingUser = await getUserByUsername(username);
