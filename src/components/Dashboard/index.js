@@ -78,7 +78,7 @@ const Dashboard = () => {
         setEditingIndex(-1);
 
         try {
-            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/update`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/budget`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
