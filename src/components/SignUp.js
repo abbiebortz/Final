@@ -10,7 +10,7 @@ function SignUp() {
     const handleSignUp = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/signup`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}api/signup`, {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',
@@ -20,8 +20,8 @@ function SignUp() {
               
 
             if (response.ok) {
-                alert('Account created successfully. Please log in.');  // Inform user to log in manually
-                navigate('/');  // Redirect to home page or login page
+                alert('Account created successfully. Please log in.');  
+                navigate('/');  
             } else {
                 const text = await response.text();  
                 alert('Failed to sign up: ' + text);
