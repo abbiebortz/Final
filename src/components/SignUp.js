@@ -10,20 +10,22 @@ function SignUp() {
     const handleSignUp = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch(`${process.env.REACT_APP_API_URL}api/signup`, {
+            
+            const apiUrl = new URL('api/signup', process.env.REACT_APP_API_URL).href;
+            
+            const response = await fetch(apiUrl, {
                 method: 'POST',
                 headers: {
-                  'Content-Type': 'application/json',
+                    'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ username, password })
-              });
-              
-
+            });
+    
             if (response.ok) {
-                alert('Account created successfully. Please log in.');  
-                navigate('/');  
+                alert('Account created successfully. Please log in.');
+                navigate('/');  // Redirect to home page or login page
             } else {
-                const text = await response.text();  
+                const text = await response.text();
                 alert('Failed to sign up: ' + text);
             }
         } catch (error) {
@@ -31,6 +33,7 @@ function SignUp() {
             alert('Failed to fetch. Check console for more details.');
         }
     };
+    
     
     return (
         <div className={styles.signupContainer}>
